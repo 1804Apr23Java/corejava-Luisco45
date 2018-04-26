@@ -686,6 +686,40 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public int solveWordProblem(String string) {
+			
+			String num1, num2;
+			int numero1, numero2;
+			
+			System.out.println("Please type the two numbers which will be used for the math problems.");
+			System.out.print("Numer #1: ");
+			num1 = sc.next();
+			System.out.println();
+			System.out.print("Numer #2 ");
+			num2 = sc.next();
+			
+			numero1.parseInt(num1);
+			numero2.parseInt(num2);
+			
+			int result=0;
+			result = numero1 + numero2;
+			System.out.println("For adding we have: " );
+			System.out.println(numero1 + "+" + numero2 + " = " + result);
+			
+			result=0;
+			result = numero1 + numero2;
+			System.out.println("For subtracting we have: " );
+			System.out.println(numero1 + "-" + numero2 + " = " + result);
+			
+			result=0;
+			result = numero1 + numero2;
+			System.out.println("For multiplication we have: " );
+			System.out.println(numero1 + "X" + numero2 + " = " + result);
+			
+			result=0;
+			result = numero1 + numero2;
+			System.out.println("For dividing we have: " );
+			System.out.println(numero1 + "/" + numero2 + " = " + result);
+				
 			// TODO Write an implementation for this method declaration
 			return 0;
 		}
