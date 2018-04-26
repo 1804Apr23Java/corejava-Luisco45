@@ -265,7 +265,9 @@ import java.util.Scanner;
 		 */
 		public String cleanPhoneNumber(String string) {
 			
-			Scanner sc = new Scanner();
+			
+			Scanner sc = new Scanner(System.in);
+			String string;
 			int areaCode;
 			System.out.println("Reminder this service is only used phone numbers from the USA");
 			System.out.print("Please type your country code: ");
@@ -275,19 +277,22 @@ import java.util.Scanner;
 			{
 				System.out.println("Please type in your phone number with the area code as well.");
 				System.out.println("Example: XXX-XXX-XXXX");
-				System.out.print("Phone number: ")
+				System.out.print("Phone number: ");
 				string = sc.next();
 				System.out.println();
 				string = string.replaceAll("[^0-9]", "");
 				
+				System.out.println("Your number is: " + string);
 			}
 			else
+			{
 				System.out.println("Wrong country code. Application will now end.");
 				System.exit(0);
+				
+			}
 		}
 			// TODO Write an implementation for this method declaration
-			return null;
-		}
+			//return null;
 
 		/**
 		 * 6. Given a phrase, count the occurrences of each word in that phrase.
