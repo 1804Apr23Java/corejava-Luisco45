@@ -264,6 +264,27 @@ import java.util.Scanner;
 		 * NANP-countries, only 1 is considered a valid country code.
 		 */
 		public String cleanPhoneNumber(String string) {
+			
+			Scanner sc = new Scanner();
+			int areaCode;
+			System.out.println("Reminder this service is only used phone numbers from the USA");
+			System.out.print("Please type your country code: ");
+			areaCode = sc.nextInt();
+			System.out.println();
+			if(areaCode== 1)
+			{
+				System.out.println("Please type in your phone number with the area code as well.");
+				System.out.println("Example: XXX-XXX-XXXX");
+				System.out.print("Phone number: ")
+				string = sc.next();
+				System.out.println();
+				string = string.replaceAll("[^0-9]", "");
+				
+			}
+			else
+				System.out.println("Wrong country code. Application will now end.");
+				System.exit(0);
+		}
 			// TODO Write an implementation for this method declaration
 			return null;
 		}
@@ -278,6 +299,22 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public Map<String, Integer> wordCount(String string) {
+			
+			String oracion = "I am a boy a boy I am";
+			
+			Map<String, Integer> word = new HashMap<>();
+			
+			Scanner scanner = new Scanner(oracion);
+			while(scanner.hasNext())
+			{
+			    String palabras = scanner.next();
+			    Integer conteo = word.put(palabras, 1);
+			    if(conteo!=null)
+			    word.put(palabras, conteo+1);
+			}
+			System.out.println(word);
+		
+			
 			// TODO Write an implementation for this method declaration
 			return null;
 		}
