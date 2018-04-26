@@ -270,6 +270,7 @@ import java.util.Scanner;
 			String string;
 			int areaCode;
 			System.out.println("Reminder this service is only used phone numbers from the USA");
+			System.out.println("USA phones country code will always be '1'");
 			System.out.print("Please type your country code: ");
 			areaCode = sc.nextInt();
 			System.out.println();
