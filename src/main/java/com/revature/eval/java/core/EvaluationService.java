@@ -263,19 +263,21 @@ import java.util.Scanner;
 		 * Note: As this exercise only deals with telephone numbers used in
 		 * NANP-countries, only 1 is considered a valid country code.
 		 */
-		public String cleanPhoneNumber(String string) {
-			
-			
+		public String cleanPhoneNumber(String string) {		
+
 			Scanner sc = new Scanner(System.in);
 			String string;
 			int areaCode;
+			int num;
 			System.out.println("Reminder this service is only used phone numbers from the USA");
-			System.out.println("USA phones country code will always be '1'");
 			System.out.print("Please type your country code: ");
 			areaCode = sc.nextInt();
 			System.out.println();
-			if(areaCode== 1)
+			if(areaCode!= 1)
 			{
+				System.out.println("Wrong country code. Application will now end.");
+				System.exit(0);
+			}
 				System.out.println("Please type in your phone number with the area code as well.");
 				System.out.println("Example: XXX-XXX-XXXX");
 				System.out.print("Phone number: ");
@@ -283,15 +285,19 @@ import java.util.Scanner;
 				System.out.println();
 				string = string.replaceAll("[^0-9]", "");
 				
-				System.out.println("Your number is: " + string);
-			}
-			else
-			{
-				System.out.println("Wrong country code. Application will now end.");
-				System.exit(0);
+				num = string.length();
+				 if(num < 9)
+				{
+				    System.out.println("You submitted " + string + ". This number is too short.");
+				    System.out.println("Please try again.");
+				    System.exit(0);
+				}
+				 else
+				 {
+					 System.out.println("Your submitted number is: " + string);
+				 }
 				
 			}
-		}
 			// TODO Write an implementation for this method declaration
 			//return null;
 
@@ -306,11 +312,11 @@ import java.util.Scanner;
 		 */
 		public Map<String, Integer> wordCount(String string) {
 			
-			String oracion = "I am a boy a boy I am";
+			string = "I am a boy a boy I am";
 			
 			Map<String, Integer> word = new HashMap<>();
 			
-			Scanner scanner = new Scanner(oracion);
+			Scanner scanner = new Scanner(string);
 			while(scanner.hasNext())
 			{
 			    String palabras = scanner.next();
@@ -401,6 +407,38 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public String toPigLatin(String string) {
+			
+			   String word = "theer";
+		        String sub = word.substring(0, 1);
+		        String piglatin;
+		    
+		       if(sub.equals("a") || sub.equals("e") || sub.equals("i") || sub.equals("o") || sub.equals("u") )
+		      {
+		          piglatin = word;
+		          StringBuilder sbl = new StringBuilder(piglatin);
+		          sbl.append("way");
+		          System.out.println(sbl);	            
+		      }
+		        
+		          String sub2 = word.substring(0, 2);
+		          if(sub2.equals("ch") || sub2.equals("th") || sub2.equals("sh")
+		          || sub2.equals("st") || sub2.equals("sm") || sub2.equals("gl"))
+		          {
+		              piglatin = word.replace(sub2, "");
+		              StringBuilder sbl = new StringBuilder(piglatin);
+		              sbl.append(sub2 + "ay");
+		              System.out.println(sbl);
+		          }
+		          
+		          else {
+		          piglatin = word.replace(sub, "");
+		          StringBuilder sbl = new StringBuilder(piglatin);
+		          sbl.append(sub + "ay");
+		          System.out.println(sbl);
+		      }
+		          }
+		        
+		    
 			// TODO Write an implementation for this method declaration
 			return null;
 		}
@@ -421,6 +459,36 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public boolean isArmstrongNumber(int input) {
+			
+			 
+		     int numero, temp;
+		     int total = 0;
+		     
+		     System.out.pritln("Welcome! Would you like to see if your number is an Armstrong number?")
+		     System.out.println("Please type the number you wish to verify.");
+		     System.out.print("Number: ");
+		     input = sc.nextInt();
+		     System.out.println();
+		    
+
+		        numero = input;
+		       
+		        while (numero != 0)
+		        {
+
+		            temp = numero % 10;
+		          
+		            total = total + temp*temp*temp;
+		           
+		            numero /= 10;
+		            
+		        }
+
+		        if(total == input)
+		            System.out.println(num + " is an Armstrong number");
+		        else
+		            System.out.println(num + " is not an Armstrong number");
+			
 			// TODO Write an implementation for this method declaration
 			return false;
 		}
