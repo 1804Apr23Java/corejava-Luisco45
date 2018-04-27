@@ -1,5 +1,6 @@
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -7,6 +8,7 @@ import java.util.Scanner;
 	public class EvaluationService {
 		
 		
+		static class Reverse	{
 		/**
 		 * 1. Without using the StringBuilder or StringBuffer class, write a method that
 		 * reverses a String. Example: reverse("example"); -> "elpmaxe"
@@ -33,7 +35,7 @@ import java.util.Scanner;
 	
 		
 	
-		
+	}
 
 		/**
 		 * 2. Convert a phrase to its acronym. Techies love their TLA (Three Letter
@@ -312,20 +314,26 @@ import java.util.Scanner;
 		 */
 		public Map<String, Integer> wordCount(String string) {
 			
-			string = "I am a boy a boy I am";
+			 	sc = new Scanner(System.in);
+	            String string;
+	            System.out.println("Please type a phrase or sentence.");
+	            System.out.print("Input: ");
+	            string = sc.nextLine();
+	            string = string.toLowerCase();
+				
+				Map<String, Integer> word = new HashMap<>();
+				
+				Scanner scanner = new Scanner(string);
+				while(scanner.hasNext())
+				{
+				    String palabras = scanner.next();
+				    Integer conteo = word.put(palabras, 1);
+				    if(conteo!=null)
+				    word.put(palabras, conteo+1);
+				}
+				System.out.println(word);
 			
-			Map<String, Integer> word = new HashMap<>();
-			
-			Scanner scanner = new Scanner(string);
-			while(scanner.hasNext())
-			{
-			    String palabras = scanner.next();
-			    Integer conteo = word.put(palabras, 1);
-			    if(conteo!=null)
-			    word.put(palabras, conteo+1);
-			}
-			System.out.println(word);
-		
+	}
 			
 			// TODO Write an implementation for this method declaration
 			return null;
@@ -408,9 +416,14 @@ import java.util.Scanner;
 		 */
 		public String toPigLatin(String string) {
 			
-			   String word = "theer";
-		        String sub = word.substring(0, 1);
-		        String piglatin;
+			   String word;
+			   
+			   System.out.println("Please type the word you would like to be translated to Pig Latin");
+			   System.out.print("Word: ");
+			   word = sc.next();
+		      
+			   String sub = word.substring(0, 1);
+		       String piglatin;
 		    
 		       if(sub.equals("a") || sub.equals("e") || sub.equals("i") || sub.equals("o") || sub.equals("u") )
 		      {
@@ -485,9 +498,9 @@ import java.util.Scanner;
 		        }
 
 		        if(total == input)
-		            System.out.println(num + " is an Armstrong number");
+		            System.out.println(numero + " is an Armstrong number");
 		        else
-		            System.out.println(num + " is not an Armstrong number");
+		            System.out.println(numero + " is not an Armstrong number");
 			
 			// TODO Write an implementation for this method declaration
 			return false;
