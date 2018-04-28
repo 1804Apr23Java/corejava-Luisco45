@@ -517,6 +517,39 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public List<Long> calculatePrimeFactorsOf(long l) {
+			  //Declarations
+			long count;
+	        
+	        //Input
+	        sc = new Scanner(System.in);
+	        System.out.println("Please type the number you wish to check "
+	         + "if it's a prime number or not");
+	        
+	         System.out.print("Number: ");
+	         l = sc.nextLong();
+	        System.out.println(); 
+	        
+	        //Setting up the limit
+	        count = l/2;   
+	        
+	        if(l<=1)
+	        {
+	            System.out.println(l + " is not a prime number.");
+	            System.exit(0);
+	        }
+	           for(int i=2; i<=count; i++)
+	           {               
+	                    if(l%i==0)
+	                    {
+	                        System.out.println(l + " is not a prime number.");
+	                        System.exit(0);//Using the exit function in order to stop the For since after this I 
+	                        				//no longer need to continue with the code
+	                    }
+	                 
+	    			}           		
+	           System.out.println(l + " is a prime number");                   
+	                }
+	            }
 			// TODO Write an implementation for this method declaration
 			return null;
 		}
@@ -575,6 +608,48 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public int calculateNthPrime(int i) {
+			
+			 //Declarations
+			int count = 0;
+			int contando;
+			
+			
+		        
+	        //Input
+			sc = new Scanner(System.in);
+		    System.out.println("Please type the number you wish to check "
+		    + "if it's a prime number or not");
+		        
+		    //Begin For #1
+		    for(int j = 0; j<6; j++) {
+		    contando = j+1;
+		    System.out.print("Number: ");
+		    i = sc.nextInt();
+		    System.out.println(); 
+		        
+		    //Setting up the limit
+		    count = i/2;
+		        
+		        
+		    if(i<=1)
+		    {
+		      System.out.println(i + " is not a prime number.");
+		      System.exit(0);
+		    }      
+		    //Begin For #2
+		    for(int z = 2; z <=count; z++)
+		    {
+		    	if(i%z==0)
+		    {
+		        System.out.println(i + " is not a prime number.");
+	            System.exit(0);//Using the exit function in order to stop the For since after this I 
+		       				  //no longer need to continue with the code
+		    }           
+		    } //End For #2           			  	
+		    System.out.println(i + " is the " + contando + "th prime number");
+		                    			 
+		    							}//End For #1
+			
 			// TODO Write an implementation for this method declaration
 			return 0;
 		}
