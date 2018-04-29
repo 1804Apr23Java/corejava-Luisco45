@@ -567,7 +567,7 @@ import java.util.Scanner;
 		 * used rotational cipher is ROT13.
 		 * 
 		 * A ROT13 on the Latin alphabet would be as follows:
-		 * 
+		 * 											
 		 * Plain: abcdefghijklmnopqrstuvwxyz Cipher: nopqrstuvwxyzabcdefghijklm It is
 		 * stronger than the Atbash cipher because it has 27 possible keys, and 25
 		 * usable keys.
@@ -578,21 +578,81 @@ import java.util.Scanner;
 		 * Examples: ROT5 omg gives trl ROT0 c gives c ROT26 Cool gives Cool ROT13 The
 		 * quick brown fox jumps over the lazy dog. gives Gur dhvpx oebja sbk whzcf bire
 		 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
+		 * 					   
 		 * quick brown fox jumps over the lazy dog.
 		 */
 		static class RotationalCipher {
-			private int key;
+			private static Scanner sc;
+			private static int key;
+			private static String string;
 
 			public RotationalCipher(int key) {
 				super();
+				sc = new Scanner(System.in);
+				System.out.println("How many rotations would you like to give the key?");
+				System.out.println("Please input your number of rotation. Input 13 for the Cipher Encryption");
+				System.out.print("Key: ");
+				key = sc.nextInt();
+				System.out.println("");
+				System.out.println("You've chosen ROT" + key + ".");
 				this.key = key;
 			}
-
-			public String rotate(String string) {
-				// TODO Write an implementation for this method declaration
-				return null;
-			}
-
+			public String rotate(String string, int key) {				
+				
+				string = "The quick brown fox jumps over the lazy dog";
+			
+				char[] letter = string.toCharArray();
+				this.key = key;
+				
+				for (int i = 0; i<string.length(); i++)
+				{
+					char word = letter[i];
+					 if (word >= 'a' && word <= 'z') {
+						 
+						 if(word > 'm') {
+							 word+=key;
+						 }
+						 else {						 
+						 word +=key;
+						 }		 
+					 if(word <=95)
+					 {
+						 int lastCheck = (word%122) + 96;
+						 word = (char) lastCheck;
+					 }
+					 
+					 else if(word > 122)
+						 {
+							 int lastCheck = (word%122) + 96;
+							 word = (char) lastCheck;
+						 }
+				}	//	if (word >= 'a' && word <= 'z') ENDS		 
+			            else if  (word >= 'A' && word <= 'Z')
+					 {
+						 if(word > 'M') {
+							 word+=key;
+						 }
+						 else {
+							 word+=key;
+						 }
+						 if(word <=64)
+						 {
+							 int lastCheck = (word%90) + 64;
+							 word = (char) lastCheck;
+						 }						 
+						 else if(word > 90)
+							 {
+								 int lastCheck = (word%90) + 64;
+								 word = (char) lastCheck;
+							 }
+					 }  System.out.print(word);	
+				}//FOR ENDS				 
+						return null;
+						}//Constructor Ends	
+			public static void main(String[] args)
+			{
+				RotionalCipher test = new RotationalCipher(key);
+				test.rotate(string, key);
 		}
 
 		/**
@@ -611,15 +671,13 @@ import java.util.Scanner;
 			
 			 //Declarations
 			int count = 0;
-			int contando;
-			
-			
+			int contando;		
 		        
 	        //Input
 			sc = new Scanner(System.in);
 		    System.out.println("Please type the number you wish to check "
 		    + "if it's a prime number or not");
-		        
+		    
 		    //Begin For #1
 		    for(int j = 0; j<6; j++) {
 		    contando = j+1;
@@ -687,6 +745,28 @@ import java.util.Scanner;
 			 * @return
 			 */
 			public static String encode(String string) {
+				string = "test";
+				string = string.trim();
+				char[] letter = string.toCharArray();
+				//this.key = key;
+				
+				for (int i = 0; i<string.length(); i++)
+				{
+					char word = letter[i];
+					
+					 if (word >= 65 && word <= 90) {
+						 
+						 word = (char)(90-(word - 65));
+						 }
+					 
+						 if(word >=97 && word <= 122)
+						 {
+							 word = (char)(122-(word - 97));
+						 }
+			
+					   System.out.print(word);	
+				}//FOR ENDS
+				System.out.println("Encoding: " + string);
 				// TODO Write an implementation for this method declaration
 				return null;
 			}
@@ -698,10 +778,31 @@ import java.util.Scanner;
 			 * @return
 			 */
 			public static String decode(String string) {
-				// TODO Write an implementation for this method declaration
-				return null;
+				string = "gvhg";
+				char[] letter = string.toCharArray();
+				//this.key = key;
+				
+				for (int i = 0; i<string.length(); i++)
+				{
+					char word = letter[i];
+					
+					 if (word >= 65 && word <= 90) {
+						 
+						 word = (char)(90-(word - 65));
+						 }
+					 
+						 if(word >=97 && word <= 122)
+						 {
+							 word = (char)(122-(word - 97));
+						 }
+						 
+					  System.out.print(word);	
+				}//FOR ENDS
+					
+					 
+						return null;
 			}
-		}
+		
 
 		/**
 		 * 15. The ISBN-10 verification process is used to validate book identification
@@ -715,10 +816,8 @@ import java.util.Scanner;
 		 * (x1 * 10 + x2 * 9 + x3 * 8 + x4 * 7 + x5 * 6 + x6 * 5 + x7 * 4 + x8 * 3 + x9
 		 * * 2 + x10 * 1) mod 11 == 0 If the result is 0, then it is a valid ISBN-10,
 		 * otherwise it is invalid.
-		 * 
 		 * Example Let's take the ISBN-10 3-598-21508-8. We plug it in to the formula,
-		 * and get:
-		 * 
+		 * and get:									 * 
 		 * (3 * 10 + 5 * 9 + 9 * 8 + 8 * 7 + 2 * 6 + 1 * 5 + 5 * 4 + 0 * 3 + 8 * 2 + 8 *
 		 * 1) mod 11 == 0 Since the result is 0, this proves that our ISBN is valid.
 		 * 
@@ -726,7 +825,40 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public boolean isValidIsbn(String string) {
-			// TODO Write an implementation for this method declaration
+			sc = new Scanner(System.in);
+			System.out.println("Input your ISBN-10 number you would like to test");
+			System.out.print("ISBN-10: ");
+			string = sc.nextLine();
+			System.out.println("Your input is: " + string);
+			
+				
+			if(string.length()>10)
+			{
+				System.out.println("Your ISBN is too short. Please try again.");
+			}  		    
+			int isbn = 10;
+			int[] value = new int[string.length()];
+			for(int i = 0; i<10; i++)
+			{		
+				int num = string.charAt(i);			 
+				 int result1 = num * isbn;		
+				 value[i]=result1;
+				 isbn-=1;		
+			}		
+			int sum =0;
+			for(int j : value)
+			{
+				sum+=j;
+			}
+			int modulo = sum%11;
+			if(modulo == 0)
+			{
+				System.out.println(string + " is a ISB number.");
+				return true;
+			}
+			else
+				System.out.println(string + " is not an ISB number.");
+			
 			return false;
 		}
 
@@ -849,17 +981,17 @@ import java.util.Scanner;
 		 */
 		public int solveWordProblem(String string) {
 			
-			String num1, num2;
+			String string, num2;
 			int numero1, numero2;
 			
 			System.out.println("Please type the two numbers which will be used for the math problems.");
 			System.out.print("Numer #1: ");
-			num1 = sc.next();
+			string = sc.next();
 			System.out.println();
 			System.out.print("Numer #2 ");
 			num2 = sc.next();
 			
-			numero1.parseInt(num1);
+			numero1.parseInt(string);
 			numero2.parseInt(num2);
 			
 			int result=0;
