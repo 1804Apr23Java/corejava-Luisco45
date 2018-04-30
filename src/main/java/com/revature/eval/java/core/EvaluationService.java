@@ -780,17 +780,17 @@ import java.util.Scanner;
 			public static String decode(String string) {
 				string = "gvhg";
 				char[] letter = string.toCharArray();
-				//this.key = key;
+				
 				
 				for (int i = 0; i<string.length(); i++)
 				{
 					char word = letter[i];
-					
+					//If for lowercase
 					 if (word >= 65 && word <= 90) {
 						 
 						 word = (char)(90-(word - 65));
 						 }
-					 
+					 	//If for Uppercase
 						 if(word >=97 && word <= 122)
 						 {
 							 word = (char)(122-(word - 97));
@@ -832,10 +832,18 @@ import java.util.Scanner;
 			System.out.println("Your input is: " + string);
 			
 				
-			if(string.length()>10)
+			
+			if(string.length()<10)
 			{
 				System.out.println("Your ISBN is too short. Please try again.");
-			}  		    
+				System.exit(0);
+			}  		
+			else if(string.length()>10)
+			{
+				System.out.println("Your ISBN is too long. Please try again." );
+				System.exit(0);
+			}
+			
 			int isbn = 10;
 			int[] value = new int[string.length()];
 			for(int i = 0; i<10; i++)
@@ -876,9 +884,36 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public boolean isPangram(String string) {
+			
+			//Code Will Not Work
+			//Could not make it work
+			string = "The quick brown fox jumps over the lazy dog";
+			string = string.toLowerCase();
+			int[] letra = new int[26];
+			int count = 0;
+			for(int i =0; i<string.length(); i++)
+			{
+				if(string.charAt(i)>= 65 && string.charAt(i)<=122)
+				{
+					if(letra[string.charAt(i) - 65] == 0)
+					{
+					count++;				
+					}					
+					}
+				}			
+			if (count == 26)
+			{
+				System.out.println("It is");
+			}
+			else
+			{
+				System.out.println("It is not");
+			}
+	
 			// TODO Write an implementation for this method declaration
 			return false;
 		}
+		
 
 		/**
 		 * 17. Calculate the moment when someone has lived for 10^9 seconds.
@@ -948,7 +983,45 @@ import java.util.Scanner;
 		 * @return
 		 */
 		public boolean isLuhnValid(String string) {
+			String string;
+			sc = new Scanner(System.in);
+			System.out.println("Please input your credit card number.");
+			System.out.print("Card #: ");
+			string = sc.nextLine();
+			System.out.println("Input: " + string);
+			string = string.replaceAll("\\s+","");
+			System.out.println(string);
+			
+			String[] cardS = string.split("");
+			
+			
+			int[] cardNum = new int[string.length()];
+			for(int i = 0; i<string.length(); i++)
+			{
+				cardNum[i] = Integer.parseInt(cardS[i]);
+			}
+			
+			for(int i = 0; i<string.length(); i++)
+			{
+				System.out.println("Before doubling " + cardNum[i] + i);
+				i=16-2;
+				
+				cardNum[i] = cardNum[i] * cardNum[i];
+				
+				System.out.println("After " + cardNum[i] + i);
+				if(cardNum[i] > 9)
+				{
+					System.out.println("Before subs 9 " + cardNum[i] + i);
+					cardNum[i] = cardNum[i-9];
+					System.out.println("After subs 9 " + cardNum[i] + i);
+					
+				}
+				i-=2;
+				
+				System.out.print(cardNum[i]);
+			}
 			// TODO Write an implementation for this method declaration
+
 			return false;
 		}
 
