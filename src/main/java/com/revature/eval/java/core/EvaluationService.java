@@ -651,7 +651,7 @@ import java.util.Scanner;
 						}//Constructor Ends	
 			public static void main(String[] args)
 			{
-				RotionalCipher test = new RotationalCipher(key);
+				RotationalCipher test = new RotationalCipher(key);
 				test.rotate(string, key);
 		}
 
